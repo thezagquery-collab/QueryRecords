@@ -1,0 +1,68 @@
+{
+  "$schema": "./catalog.schema.json",
+  "label": {
+    "name": "QueryRecords",
+    "imprint": "Zag Query",
+    "founder": "Timur Azaklı",
+    "description": "Albums, EPs, and singles from the QueryRecords roster."
+  },
+  "artists": [
+    {
+      "slug": "inez-vale",
+      "name": "Inez Vale",
+      "links": {
+        "spotify": null,
+        "appleMusic": null,
+        "youtube": null
+      },
+      "releases": []
+    },
+    {
+      "slug": "defne-sol",
+      "name": "Defne Sol",
+      "links": {
+        "spotify": null,
+        "appleMusic": null,
+        "youtube": null
+      },
+      "releases": []
+    },
+    {
+      "slug": "nisan-mora",
+      "name": "Nisan Mora",
+      "links": {
+        "spotify": null,
+        "appleMusic": null,
+        "youtube": null
+      },
+      "releases": []
+    },
+    {
+      "slug": "violet-volt",
+      "name": "Violet Volt",
+      "links": {
+        "spotify": "https://open.spotify.com/artist/6k0L5Gej4zHN8WyMIBwGm1",
+        "appleMusic": "https://music.apple.com/us/artist/violet-volt/6814730857",
+        "youtube": "https://www.youtube.com/channel/UCAA86O3dLbUs5__ubkiPePg"
+      },
+      "releases": [
+        {
+          "slug": "grid-off",
+          "title": "Grid Off",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-22",
+          "streetDateApproximate": true,
+          "distributor": "DistroKid",
+          "cover": null,
+          "links": {
+            "spotify": null,
+            "appleMusic": null,
+            "youtube": null,
+            "hyperfollow": "https://distrokid.com/hyperfollow/violetvolt/grid-off"
+          }
+        }
+      ]
+    }
+  ]
+}
