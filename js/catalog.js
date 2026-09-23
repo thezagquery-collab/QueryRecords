@@ -42,8 +42,32 @@ const MONTHS = [
 ];
 
 const app = document.querySelector("[data-page]");
+const PAGE_TURN_MS = 250;
+const TURN_KEY = "qr-page-turn";
+let pageTurnPending = false;
+let turnSettled = false;
+
+document.addEventListener("click", onCatalogClick, true);
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  clearTurnKey();
+  pageTurnPending = false;
+  const root = document.documentElement;
+  root.classList.add("is-page-instant");
+  root.classList.remove(
+    "is-page-out",
+    "is-page-in",
+    "is-page-settled",
+    "to-back",
+    "to-forward",
+    "from-back",
+    "from-forward"
+  );
+  requestAnimationFrame(() => root.classList.remove("is-page-instant"));
+});
 
 document.addEventListener("DOMContentLoaded", () => {
+  const turnFallback = window.setTimeout(settlePageTurn, 160);
   loadCatalog()
     .then((catalog) => {
       if (app.dataset.page === "artist") renderArtist(catalog);
@@ -57,6 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "Catalog unavailable",
         "data/catalog.json could not be loaded. Preview this folder with a local web server, then open the site from that server."
       ));
+    })
+    .finally(() => {
+      window.clearTimeout(turnFallback);
+      settlePageTurn();
     });
 });
 
@@ -80,7 +108,11 @@ function renderHome(catalog) {
 
   const hero = el("header", "hero");
   const credit = creditLine(label);
-  if (credit) hero.append(eyebrow(credit));
+  if (credit) {
+    const line = el("p", "hero-credit");
+    line.textContent = credit;
+    hero.append(line);
+  }
   hero.append(wordmark(name));
   const lede = el("p", "lede");
   lede.textContent = label.description || "Albums, EPs, and singles.";
@@ -488,4 +520,95 @@ function el(tag, className) {
   const node = document.createElement(tag);
   if (className) node.className = className;
   return node;
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function clearTurnKey() {
+  try {
+    sessionStorage.removeItem(TURN_KEY);
+  } catch {
+    /* Private browsing can block storage; the flip still runs once. */
+  }
+}
+
+function settlePageTurn() {
+  if (turnSettled) return;
+  turnSettled = true;
+  const root = document.documentElement;
+  if (prefersReducedMotion() || !root.classList.contains("is-page-in")) {
+    clearTurnKey();
+    root.classList.remove("is-page-in", "is-page-settled", "from-back", "from-forward");
+    return;
+  }
+  clearTurnKey();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => root.classList.add("is-page-settled"));
+  });
+  window.setTimeout(() => {
+    root.classList.add("is-page-instant");
+    root.classList.remove("is-page-in", "is-page-settled", "from-back", "from-forward");
+    requestAnimationFrame(() => root.classList.remove("is-page-instant"));
+  }, PAGE_TURN_MS + 80);
+}
+
+function catalogPageKind(url) {
+  const file = url.pathname.split("/").pop();
+  if (file === "artist.html") return "artist";
+  if (file === "index.html" || file === "") return "home";
+  return "";
+}
+
+function onCatalogClick(event) {
+  if (event.defaultPrevented || event.button !== 0) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  if (prefersReducedMotion() || pageTurnPending) return;
+  const target = event.target instanceof Element ? event.target : event.target && event.target.parentElement;
+  if (!target) return;
+  const anchor = target.closest("a[href]");
+  if (!anchor || anchor.hasAttribute("download")) return;
+  if (anchor.target && anchor.target !== "_self") return;
+
+  let url;
+  try {
+    url = new URL(anchor.href, window.location.href);
+  } catch {
+    return;
+  }
+  if (url.origin !== window.location.origin) return;
+
+  const dest = catalogPageKind(url);
+  const here = app && app.dataset.page === "artist" ? "artist" : "home";
+  if ((dest !== "home" && dest !== "artist") || dest === here) return;
+
+  event.preventDefault();
+  pageTurnPending = true;
+  try {
+    const back = dest === "home";
+    try {
+      sessionStorage.setItem(TURN_KEY, back ? "back" : "forward");
+    } catch {
+      /* Navigation still proceeds if storage is unavailable. */
+    }
+    document.documentElement.classList.remove("is-page-in", "is-page-settled", "from-back", "from-forward");
+    document.documentElement.classList.add("is-page-out", back ? "to-back" : "to-forward");
+
+    const from = window.location.href;
+    window.setTimeout(() => {
+      window.location.href = url.href;
+    }, PAGE_TURN_MS);
+    window.setTimeout(() => {
+      if (window.location.href !== from) return;
+      pageTurnPending = false;
+      clearTurnKey();
+      const root = document.documentElement;
+      root.classList.add("is-page-instant");
+      root.classList.remove("is-page-out", "to-back", "to-forward");
+      requestAnimationFrame(() => root.classList.remove("is-page-instant"));
+    }, 4000);
+  } catch {
+    window.location.href = url.href;
+  }
 }

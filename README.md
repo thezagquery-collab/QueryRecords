@@ -1,6 +1,6 @@
 # QueryRecords
 
-Static catalog for **QueryRecords**, a Zag Query imprint by Timur Azaklı. The home page lists the roster. Each artist page groups releases into **Albums**, **EPs**, and **Singles only**.
+Static catalog for **QueryRecords**, a zag Query imprint by Timur Azaklı. The home page lists the roster. Each artist page groups releases into **Albums**, **EPs**, and **Singles only**.
 
 After GitHub Pages is enabled, the site is served at:
 

@@ -2,7 +2,7 @@
   "$schema": "./catalog.schema.json",
   "label": {
     "name": "QueryRecords",
-    "imprint": "Zag Query",
+    "imprint": "zag Query",
     "founder": "Timur Azaklı",
     "description": "Albums, EPs, and singles from the QueryRecords roster."
   },
