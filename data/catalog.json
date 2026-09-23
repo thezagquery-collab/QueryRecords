@@ -11,31 +11,178 @@
       "slug": "inez-vale",
       "name": "Inez Vale",
       "links": {
-        "spotify": null,
-        "appleMusic": null,
-        "youtube": null
+        "spotify": "https://open.spotify.com/artist/5NFFQjMIws2NUX4IBQp1Co",
+        "appleMusic": "https://music.apple.com/us/artist/inez-vale/6804503722",
+        "youtube": "https://www.youtube.com/channel/UCiAyd3ZypW_0m1wVDQw8LEA"
       },
-      "releases": []
+      "releases": [
+        {
+          "slug": "the-price-dont-show",
+          "title": "THE PRICE DON'T SHOW",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-08-23",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/the-price-dont-show.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/3KQc3ezli1UyZ5qX1D0SC1",
+            "appleMusic": "https://music.apple.com/us/album/the-price-dont-show/6804533134",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_m5czEb873Rfhi-c-e7yDBfYtYKrHdOUw0",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/the-price-dont-show"
+          }
+        },
+        {
+          "slug": "the-love-was-fine",
+          "title": "THE LOVE WAS FINE",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-08-25",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/the-love-was-fine.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/3VpKG3Taw78mcC4Uxowfkv",
+            "appleMusic": "https://music.apple.com/us/album/the-love-was-fine/6805321359",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_n4OM8xl8ctAW1l6VCxsNDu-bPAOkzu6gA",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/the-love-was-fine"
+          }
+        },
+        {
+          "slug": "the-house-kept-time",
+          "title": "The House Kept Time",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-08-28",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/the-house-kept-time.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/2VVsEi497igNtcCgF0XWpg",
+            "appleMusic": "https://music.apple.com/us/album/the-house-kept-time/6806450603",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kYhGAqtIQKHYUFcSFh3EsvzX1oIAIrklQ",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/the-house-kept-time"
+          }
+        },
+        {
+          "slug": "the-morning-found-me-gone",
+          "title": "The Morning Found Me Gone",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-02",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/the-morning-found-me-gone.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/6HKXb3O0JhoXn7tRVv5VF4",
+            "appleMusic": "https://music.apple.com/us/album/the-morning-found-me-gone/6807839478",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nxXhADhBBUUyaRAcNyEoDV1olngUvysu0",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/the-morning-found-me-gone"
+          }
+        },
+        {
+          "slug": "the-dark-was-very-large",
+          "title": "The Dark Was Very Large",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-03",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/the-dark-was-very-large.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/2N2W5rVDLCk9SqZeL6A9ms",
+            "appleMusic": "https://music.apple.com/us/album/the-dark-was-very-large/6808545369",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_mvw4pzMA_8h941unhGXKodLs1Y13ErVQY",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/the-dark-was-very-large"
+          }
+        },
+        {
+          "slug": "stay",
+          "title": "Stay",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-10",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/stay.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/3bo3WhVoSLnXFtGteMXQGp",
+            "appleMusic": "https://music.apple.com/us/album/stay/6810821938",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nH3KttySnLlklvofyx9EnwCJXCc3ygttE",
+            "hyperfollow": "https://distrokid.com/hyperfollow/inezvale/stay"
+          }
+        }
+      ]
     },
     {
       "slug": "defne-sol",
       "name": "Defne Sol",
       "links": {
-        "spotify": null,
-        "appleMusic": null,
-        "youtube": null
+        "spotify": "https://open.spotify.com/artist/7yHSgPLVnwZF8xHjqfH4B4",
+        "appleMusic": "https://music.apple.com/us/artist/defne-sol/6811483706",
+        "youtube": "https://www.youtube.com/@defnesol"
       },
-      "releases": []
+      "releases": [
+        {
+          "slug": "defne-sol",
+          "title": "Defne Sol",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-13",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/defne-sol.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/75g1f30NVc9jkkswmSAX2i",
+            "appleMusic": "https://music.apple.com/us/album/defne-sol/6811729341",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nYFSRBW-v4GsPiRUy3gRHianlPCx3ee40",
+            "hyperfollow": "https://distrokid.com/hyperfollow/defnesol/defne-sol"
+          }
+        }
+      ]
     },
     {
       "slug": "nisan-mora",
       "name": "Nisan Mora",
       "links": {
-        "spotify": null,
-        "appleMusic": null,
-        "youtube": null
+        "spotify": "https://open.spotify.com/artist/3yJ61SCvznpjSgD1cQEMRA",
+        "appleMusic": "https://music.apple.com/us/artist/nisan-mora/6811456981",
+        "youtube": "https://www.youtube.com/@nisanmora"
       },
-      "releases": []
+      "releases": [
+        {
+          "slug": "mazi-odasi",
+          "title": "Mazi Odası",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-15",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/mazi-odasi.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/2Hg8rZrfaBIIkU14qgQbYd",
+            "appleMusic": "https://music.apple.com/us/album/mazi-odas%C4%B1/6812609654",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_lgbeqQ4lF1KEi_11YnjVI_fJf5X25dtd4",
+            "hyperfollow": "https://distrokid.com/hyperfollow/nisanmora/mazi-odas"
+          }
+        },
+        {
+          "slug": "nisan-atesi",
+          "title": "Nisan Ateşi",
+          "type": "album",
+          "year": 2026,
+          "streetDate": "2026-09-16",
+          "streetDateApproximate": false,
+          "distributor": "DistroKid",
+          "cover": "assets/covers/nisan-atesi.jpg",
+          "links": {
+            "spotify": "https://open.spotify.com/album/5I92h5n6jhSs8n12lUzdw3",
+            "appleMusic": "https://music.apple.com/us/album/nisan-ate%C5%9Fi/6813583489",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_k-wMtM-1vLUXpgalAS-yiOcByq33W-pE0",
+            "hyperfollow": "https://distrokid.com/hyperfollow/nisanmora/nisan-atei"
+          }
+        }
+      ]
     },
     {
       "slug": "violet-volt",
@@ -52,13 +199,13 @@
           "type": "album",
           "year": 2026,
           "streetDate": "2026-09-22",
-          "streetDateApproximate": true,
+          "streetDateApproximate": false,
           "distributor": "DistroKid",
-          "cover": null,
+          "cover": "assets/covers/grid-off.jpg",
           "links": {
-            "spotify": null,
-            "appleMusic": null,
-            "youtube": null,
+            "spotify": "https://open.spotify.com/album/6EgfCJF8f2qbvA1QFpdSrZ",
+            "appleMusic": "https://music.apple.com/us/album/grid-off/6815094832",
+            "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kU1IBbZC7DWNyE_9USySRgPzF8rcBSTAc",
             "hyperfollow": "https://distrokid.com/hyperfollow/violetvolt/grid-off"
           }
         }
