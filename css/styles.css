@@ -174,7 +174,7 @@ html.is-page-in {
 }
 
 html.is-page-out .page {
-  transform: perspective(1500px) rotateY(-72deg);
+  transform: perspective(1800px) rotateY(58deg);
 }
 
 html.is-page-out.to-back .page,
@@ -183,21 +183,21 @@ html.is-page-in.from-back .page {
 }
 
 html.is-page-out.to-back .page {
-  transform: perspective(1500px) rotateY(72deg);
+  transform: perspective(1800px) rotateY(-58deg);
 }
 
 html.is-page-in .page {
   transition: none;
-  transform: perspective(1500px) rotateY(-72deg);
+  transform: perspective(1800px) rotateY(58deg);
 }
 
 html.is-page-in.from-back .page {
-  transform: perspective(1500px) rotateY(72deg);
+  transform: perspective(1800px) rotateY(-58deg);
 }
 
 html.is-page-in.is-page-settled .page {
   transition: transform var(--page-turn) cubic-bezier(0.16, 0.84, 0.32, 1);
-  transform: perspective(1500px) rotateY(0deg);
+  transform: perspective(1800px) rotateY(0deg);
 }
 
 html.is-page-out .page::before,
@@ -550,20 +550,27 @@ html.is-page-instant .page::after {
   object-fit: cover;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .cover-img,
-  .cover.is-pending {
-    transition: filter 180ms ease;
-  }
+.cover-img,
+.cover.is-pending {
+  transition: filter 180ms ease;
+}
 
+.cover:hover .cover-img,
+.cover:focus-within .cover-img {
+  filter: brightness(1.07) contrast(1.05) saturate(1.16);
+}
+
+.cover.is-pending:hover,
+.cover.is-pending:focus-within {
+  filter: brightness(1.14) contrast(1.05) saturate(1.28);
+}
+
+@media (hover: none) and (pointer: coarse) {
   .cover:hover .cover-img,
-  .cover:focus-within .cover-img {
-    filter: brightness(1.07) contrast(1.05) saturate(1.16);
-  }
-
+  .cover:focus-within .cover-img,
   .cover.is-pending:hover,
   .cover.is-pending:focus-within {
-    filter: brightness(1.09) contrast(1.04) saturate(1.2);
+    filter: none;
   }
 }
 
