@@ -39,6 +39,11 @@
           "description": "Used in artist.html?artist=slug"
         },
         "name": { "type": "string" },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short public artist explanation shown under the name on the artist page. One to three sentences."
+        },
         "links": { "$ref": "#/$defs/artistLinks" },
         "releases": {
           "type": "array",
