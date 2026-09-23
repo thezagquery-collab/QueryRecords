@@ -1,0 +1,16 @@
+{
+  "name": "QueryRecords",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8000
+    }
+  ]
+}

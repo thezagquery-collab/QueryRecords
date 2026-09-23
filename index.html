@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QueryRecords — Zag Query artists</title>
+    <meta
+      name="description"
+      content="QueryRecords is the music catalog for Zag Query artists: albums, EPs and singles by artist."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">◈</span>
+          <span class="brand-name">QueryRecords</span>
+        </a>
+        <span class="tagline">Zag Query · music catalog</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <h1>The Zag Query catalog</h1>
+          <p class="hero-sub">
+            Every album, EP and single from the Zag Query roster — in one place.
+          </p>
+        </div>
+      </section>
+
+      <section class="wrap">
+        <div class="section-head">
+          <h2>Artists</h2>
+          <span id="artist-count" class="pill"></span>
+        </div>
+        <div id="artist-grid" class="grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>QueryRecords — a Zag Query catalog.</span>
+      </div>
+    </footer>
+
+    <script src="assets/js/catalog.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>
