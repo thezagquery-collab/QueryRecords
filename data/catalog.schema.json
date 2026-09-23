@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thezagquery-collab.github.io/QueryRecords/data/catalog.schema.json",
+  "title": "QueryRecords catalog",
+  "description": "Source of truth for the QueryRecords static catalog. Unknown store URLs must be null so the site can show TBD. Do not invent stream counts.",
+  "type": "object",
+  "required": ["label", "artists"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "label": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "imprint": { "type": "string" },
+        "founder": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "artists": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artist" }
+    }
+  },
+  "$defs": {
+    "urlOrNull": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^https?://\\S+$" }
+      ]
+    },
+    "artist": {
+      "type": "object",
+      "required": ["slug", "name", "releases"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "Used in artist.html?artist=slug"
+        },
+        "name": { "type": "string" },
+        "links": { "$ref": "#/$defs/artistLinks" },
+        "releases": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/release" }
+        }
+      }
+    },
+    "artistLinks": {
+      "type": "object",
+      "properties": {
+        "spotify": { "$ref": "#/$defs/urlOrNull" },
+        "appleMusic": { "$ref": "#/$defs/urlOrNull" },
+        "youtube": { "$ref": "#/$defs/urlOrNull" }
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string" },
+        "type": {
+          "enum": ["album", "ep", "single"],
+          "description": "album → Albums, ep → EPs, single → Singles only (standalone singles, not tracks from an album or EP)."
+        },
+        "year": { "type": ["integer", "null"], "minimum": 1900, "maximum": 2100 },
+        "streetDate": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "streetDateApproximate": { "type": "boolean" },
+        "distributor": { "type": ["string", "null"] },
+        "cover": {
+          "type": ["string", "null"],
+          "description": "Site-relative path without a leading slash, such as assets/covers/grid-off.jpg, or an https URL. null shows the placeholder."
+        },
+        "links": { "$ref": "#/$defs/releaseLinks" }
+      }
+    },
+    "releaseLinks": {
+      "type": "object",
+      "properties": {
+        "spotify": { "$ref": "#/$defs/urlOrNull" },
+        "appleMusic": { "$ref": "#/$defs/urlOrNull" },
+        "youtube": { "$ref": "#/$defs/urlOrNull" },
+        "hyperfollow": { "$ref": "#/$defs/urlOrNull" }
+      }
+    }
+  }
+}
