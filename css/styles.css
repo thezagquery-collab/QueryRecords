@@ -12,6 +12,7 @@
   --sans: Outfit, "Avenir Next", "Segoe UI", sans-serif;
   --wrap: 1120px;
   --header: 4.25rem;
+  --page-turn: 250ms;
 }
 
 *,
@@ -137,7 +138,91 @@ img {
 }
 
 .page {
+  position: relative;
   padding: 2.5rem 0 4.5rem;
+  transform-origin: left center;
+  transition: transform var(--page-turn) cubic-bezier(0.16, 0.84, 0.32, 1);
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--page-turn) ease;
+}
+
+.page::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 14px;
+  background: linear-gradient(90deg, rgba(224, 196, 138, 0.55), rgba(224, 196, 138, 0));
+}
+
+.page::after {
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.28), transparent 42%);
+}
+
+html.is-page-out,
+html.is-page-in {
+  overflow-x: hidden;
+}
+
+html.is-page-out .page {
+  transform: perspective(1800px) rotateY(58deg);
+}
+
+html.is-page-out.to-back .page,
+html.is-page-in.from-back .page {
+  transform-origin: right center;
+}
+
+html.is-page-out.to-back .page {
+  transform: perspective(1800px) rotateY(-58deg);
+}
+
+html.is-page-in .page {
+  transition: none;
+  transform: perspective(1800px) rotateY(58deg);
+}
+
+html.is-page-in.from-back .page {
+  transform: perspective(1800px) rotateY(-58deg);
+}
+
+html.is-page-in.is-page-settled .page {
+  transition: transform var(--page-turn) cubic-bezier(0.16, 0.84, 0.32, 1);
+  transform: perspective(1800px) rotateY(0deg);
+}
+
+html.is-page-out .page::before,
+html.is-page-out .page::after,
+html.is-page-in:not(.is-page-settled) .page::before,
+html.is-page-in:not(.is-page-settled) .page::after {
+  opacity: 1;
+}
+
+html.is-page-out.to-back .page::before,
+html.is-page-in.from-back .page::before {
+  left: auto;
+  right: 0;
+  background: linear-gradient(270deg, rgba(224, 196, 138, 0.55), rgba(224, 196, 138, 0));
+}
+
+html.is-page-out.to-back .page::after,
+html.is-page-in.from-back .page::after {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.28), transparent 42%);
+}
+
+html.is-page-instant .page,
+html.is-page-instant .page::before,
+html.is-page-instant .page::after {
+  transition: none !important;
 }
 
 .loading,
@@ -180,6 +265,18 @@ img {
   color: var(--muted);
   font-size: 1.125rem;
   font-weight: 300;
+}
+
+.hero-credit,
+.footer-imprint {
+  text-transform: none;
+}
+
+.hero-credit {
+  margin: 0;
+  color: var(--brass);
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
 }
 
 .home-layout {
@@ -453,6 +550,30 @@ img {
   object-fit: cover;
 }
 
+.cover-img,
+.cover.is-pending {
+  transition: filter 180ms ease;
+}
+
+.cover:hover .cover-img,
+.cover:focus-within .cover-img {
+  filter: brightness(1.07) contrast(1.05) saturate(1.16);
+}
+
+.cover.is-pending:hover,
+.cover.is-pending:focus-within {
+  filter: brightness(1.14) contrast(1.05) saturate(1.28);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cover:hover .cover-img,
+  .cover:focus-within .cover-img,
+  .cover.is-pending:hover,
+  .cover.is-pending:focus-within {
+    filter: none;
+  }
+}
+
 .mono,
 .cap {
   position: absolute;
@@ -555,5 +676,16 @@ img {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  html.is-page-in .page,
+  html.is-page-out .page,
+  html.is-page-in.is-page-settled .page {
+    transform: none !important;
+  }
+
+  .page::before,
+  .page::after {
+    opacity: 0 !important;
   }
 }

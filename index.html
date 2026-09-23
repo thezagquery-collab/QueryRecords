@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b0a09" />
     <meta
       name="description"
-      content="QueryRecords catalog of albums, EPs, and singles. A Zag Query imprint by Timur Azaklı."
+      content="QueryRecords catalog of albums, EPs, and singles. A zag Query imprint by Timur Azaklı."
     />
     <title>QueryRecords</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -17,6 +17,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      (function () {
+        try {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          var dir = sessionStorage.getItem("qr-page-turn");
+          if (dir === "forward" || dir === "back") {
+            document.documentElement.classList.add("is-page-in", "from-" + dir);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <a class="skip" href="#app">Skip to catalog</a>
@@ -44,7 +55,7 @@
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <p>QueryRecords</p>
-        <p>Zag Query · Timur Azaklı</p>
+        <p class="footer-imprint">zag Query · Timur Azaklı</p>
       </div>
     </footer>
     <script src="js/catalog.js" defer></script>
