@@ -158,6 +158,8 @@ function renderArtist(catalog) {
   const title = el("h1", "artist-title");
   title.textContent = artist.name;
   header.append(title);
+  const bio = artistBio(artist);
+  if (bio) header.append(bio);
   header.append(storeList(artist.links, ARTIST_STORES));
   header.append(jumpNav());
 
@@ -457,6 +459,14 @@ function wordmark(name) {
 
 function creditLine(label) {
   return [label.imprint, label.founder].filter((part) => typeof part === "string" && part.trim()).join(" · ");
+}
+
+function artistBio(artist) {
+  const text = typeof artist.description === "string" ? artist.description.trim() : "";
+  if (!text) return null;
+  const bio = el("p", "artist-bio");
+  bio.textContent = text;
+  return bio;
 }
 
 function eyebrow(text) {
