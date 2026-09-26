@@ -181,7 +181,14 @@
     lyrics.hidden = !open;
     lyricsToggle.setAttribute("aria-expanded", open ? "true" : "false");
     lyricsToggle.textContent = open ? "Hide lyrics" : "Lyrics";
-    if (open) paintLyrics();
+    if (open) {
+      paintLyrics();
+      const rect = lyrics.getBoundingClientRect();
+      const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+      if (visible < Math.min(rect.height, window.innerHeight) * 0.6) {
+        lyrics.scrollIntoView({ block: "start" });
+      }
+    }
   }
 
   function bindSeek() {
@@ -278,6 +285,7 @@
       if (!album || current < 0) return;
       if (audio.dataset.src !== album.tracks[current].audio) return;
       if (current >= album.tracks.length - 1) {
+        audio.pause();
         setPlaying(false);
         status.textContent = "";
         return;

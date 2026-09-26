@@ -243,8 +243,8 @@ h1 {
 
 .seek-wrap {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.75rem;
+  grid-template-columns: 1fr auto;
+  gap: 0.1rem 0.75rem;
   align-items: center;
   margin-top: 0.85rem;
 }
@@ -254,12 +254,20 @@ h1 {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   font-size: 0.95rem;
-  text-align: center;
+}
+
+#elapsed {
+  text-align: left;
+}
+
+#total {
+  text-align: right;
 }
 
 #seek {
   -webkit-appearance: none;
   appearance: none;
+  grid-column: 1 / -1;
   width: 100%;
   height: 2.75rem;
   margin: 0;
@@ -308,6 +316,7 @@ h1 {
 }
 
 .lyrics-toggle {
+  justify-self: start;
   min-height: 3rem;
   margin-top: 0.9rem;
   padding: 0.6rem 1.15rem;
@@ -458,13 +467,62 @@ h1 {
   }
 
   .stage {
-    grid-template-columns: minmax(280px, 400px) minmax(0, 1fr);
-    gap: 2.25rem;
+    grid-template-columns: minmax(520px, 600px) minmax(0, 1fr);
+    gap: 2rem 2.25rem;
     align-items: start;
   }
 
+  .now {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.1rem;
+    align-items: center;
+  }
+
   .cover {
+    grid-column: 1;
+    grid-row: 1 / span 6;
+    width: 100%;
     max-width: none;
+    align-self: start;
+  }
+
+  .identity,
+  .now-title,
+  .status,
+  .transport,
+  .seek-wrap,
+  .lyrics-toggle {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .identity {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 3vw, 3.15rem);
+    text-wrap: balance;
+  }
+
+  .now-title {
+    margin-top: 0.45rem;
+  }
+
+  .transport {
+    margin-top: 0.45rem;
+  }
+
+  .lyrics:not([hidden]) {
+    grid-column: 1 / -1;
+    grid-row: 7;
+    max-height: none;
+  }
+
+  .lyrics-body {
+    max-height: min(34vh, 18rem);
   }
 
   .list-wrap {
@@ -477,23 +535,9 @@ h1 {
   }
 }
 
-@media (min-width: 880px) and (max-height: 820px) {
-  .cover {
-    max-width: 250px;
-  }
-
-  h1 {
-    font-size: 2.6rem;
-  }
-
-  .identity {
-    margin-top: 0.75rem;
-  }
-}
-
-@media (min-width: 880px) and (max-height: 680px) {
-  .cover {
-    max-width: 180px;
+@media (min-width: 880px) and (max-height: 640px) {
+  .now {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
   }
 
   .play {
